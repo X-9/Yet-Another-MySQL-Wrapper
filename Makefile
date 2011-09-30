@@ -1,11 +1,10 @@
 APP ?= db-test
 OBJS = mysqldb.o main.o
 
-CONFIG = /opt/local/bin/mysql_config5
-LIBS = $(shell $(CONFIG) --libmysqld-libs)
-INCLUDE = #$(shell $(CONFIG) --include)
+LIBS = -Lmysql-connector/lib/ -lmysqlclient
+INCLUDE = -Imysql-connector/include/
 CC = g++
-CFLAGS = -Wall -pedantic -ggdb -O2 -Wno-long-long $(shell $(CONFIG) --cflags)
+CFLAGS = -Wall -pedantic -ggdb -O2 -Wno-long-long
 
 
 all: $(APP)

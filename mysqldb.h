@@ -17,9 +17,11 @@ public:
 			const std::string &db);
 	virtual ~MySQLDb();
 
+    // Returns true if table was succesfully created, false if an error occured.
 	bool create_table(const std::string &name);
 
 private:
+    // Returns true if connection was succesfully created or already exists.
 	bool connect_db();
 
 	std::string m_host;
